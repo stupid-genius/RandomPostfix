@@ -1,0 +1,29 @@
+<html>
+<head>
+<title>GA test</title>
+<applet name="MCP" code="MasterControl.class" width="0" height="0"></applet>
+<script>
+var Nglet = document.applets.MCP;
+var eTopOutput;
+var eControlOutput;
+
+function updateOutput()
+{
+	if(Nglet.topIsUpdated())
+		eTopOutput.innerHTML = Nglet.getTopReport();
+	if(Nglet.controlIsUpdated())
+		eControlOutput.innerHTML = Nglet.getControlReport();
+}
+function init()
+{
+	eTopOutput = document.getElementById("topOutput");
+	eControlOutput = document.getElementById("controlOutput");
+	setInterval("updateOutput()", 10000);
+}
+</script>
+</head>
+<body onload="init()">
+	<div id="topOutput"></div>
+	<div id="controlOutput"></div>
+</body>
+</html>
